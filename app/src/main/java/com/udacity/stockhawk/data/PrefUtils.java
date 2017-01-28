@@ -88,4 +88,14 @@ public final class PrefUtils {
         editor.apply();
     }
 
+    public static void setFaultyStock(Context context,String stock){
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(context.getString(R.string.pref_error_stock),stock);
+        editor.apply();
+    }
+
+
 }

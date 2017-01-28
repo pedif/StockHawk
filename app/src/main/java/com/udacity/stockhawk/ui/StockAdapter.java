@@ -66,19 +66,18 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
 
         cursor.moveToPosition(position);
 
+        String description="";
 
         holder.symbol.setText(cursor.getString(Contract.Quote.POSITION_SYMBOL));
+        description+= holder.symbol.getText();
         holder.price.setText(dollarFormat.format(cursor.getFloat(Contract.Quote.POSITION_PRICE)));
+        description+= " "+holder.price.getText();
 
 
         float rawAbsoluteChange = cursor.getFloat(Contract.Quote.POSITION_ABSOLUTE_CHANGE);
         float percentageChange = cursor.getFloat(Contract.Quote.POSITION_PERCENTAGE_CHANGE);
 
-        if (rawAbsoluteChange > 0) {
-            holder.change.setBackgroundResource(R.drawable.percent_change_pill_green);
-        } else {
-            holder.change.setBackgroundResource(R.drawable.percent_change_pill_red);
-        }
+
 
         String change = dollarFormatWithPlus.format(rawAbsoluteChange);
         String percentage = percentageFormat.format(percentageChange / 100);
@@ -86,10 +85,21 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
         if (PrefUtils.getDisplayMode(context)
                 .equals(context.getString(R.string.pref_display_mode_absolute_key))) {
             holder.change.setText(change);
+            description+= " "+context.getString(R.string.unit);
         } else {
             holder.change.setText(percentage);
+            description+= " "+context.getString(R.string.percent);
         }
 
+        if (rawAbsoluteChange > 0) {
+            holder.change.setBackgroundResource(R.drawable.percent_change_pill_green);
+            description+= " "+context.getString(R.string.increase);
+        } else {
+            holder.change.setBackgroundResource(R.drawable.percent_change_pill_red);
+            description+= " "+context.getString(R.string.decrease);
+        }
+
+        holder.itemView.setContentDescription(description);
 
     }
 

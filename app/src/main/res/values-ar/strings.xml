@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="app_name">Stock Hawk</string>
+    <string name="action_change_units">displayMode</string>
+
+    <string name="dialog_title">Add Stock</string>
+    <string name="dialog_hint">Symbol (e.g. GOOG)</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_add">Add</string>
+    <string name="history_dialog_title">\"%1$s\" Stock History</string>
+
+    <string name="error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
+    <string name="error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
+    <string name="error_wrong_stock">\"%1$s\" is an invalid stock. your stock list rolled back to a previous stable version.</string>
+    <string name="error_blank_stock">Blank name is not allowed</string>
+    <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
+    <string name="toast_no_connectivity">Will refresh when network available.</string>
+
+
+    <string name="percent">Percents</string>
+    <string name="increase">Increased</string>
+    <string name="decrease">Decreased</string>
+    <string name="stock_name">Stock Name</string>
+
+</resources>
